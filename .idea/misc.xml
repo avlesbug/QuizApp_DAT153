@@ -3,11 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/drawable-v24/cat.xml" value="0.131640625" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/drawable-v24/dog.xml" value="0.131640625" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/drawable-v24/horse.xml" value="0.131640625" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1909722222222222" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/drawable/cat_background.xml" value="0.1909722222222222" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/drawable/correct_option_border_bg.xml" value="0.18888888888888888" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/drawable/default_option_border_bg.xml" value="0.109765625" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/drawable/dog_background.xml" value="0.202734375" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1909722222222222" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/drawable/selected_option_border_bg.xml" value="0.14375" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/drawable/wrong_option_border_bg.xml" value="0.18888888888888888" />
         <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/layout/activity_add.xml" value="0.190625" />
         <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/layout/activity_database.xml" value="0.190625" />
         <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/layout/activity_quiz.xml" value="0.190625" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/layout/activity_quiz.xml" value="0.2986857825567503" />
         <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/menu/menu.xml" value="0.4" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/mipmap-anydpi-v26/dog.xml" value="0.1265625" />
+        <entry key="..\:/Users/krist/AndroidStudioProjects/QuizApp/app/src/main/res/mipmap-anydpi-v26/horse.xml" value="0.1909722222222222" />
       </map>
     </option>
   </component>
