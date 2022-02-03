@@ -1,43 +1,23 @@
 package com.example.quizapp;
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
-
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class DatabaseActivity extends AppCompatActivity {
+public class UploadLoader {
     private DatabaseReference mDatabaseReferance;
     private PictureAdapter mPictureAdapter;
-    private RecyclerView mRecView;
     private ImageDB imageDB;
-    //private List<Upload> mUpl;
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_database);
-
-
-        //defining properties for pictures in Recycler View
-        mRecView = findViewById(R.id.recycler_1);
-        mRecView.setLayoutManager(new LinearLayoutManager(DatabaseActivity.this));
-        mRecView.setHasFixedSize(true);
+    public UploadLoader(){
         imageDB = new ImageDB();
         //mUpl= new ArrayList<>();
 
@@ -53,21 +33,15 @@ public class DatabaseActivity extends AppCompatActivity {
                     //mUpl.add(upload);
                 }
                 //mPictureAdapter = new PictureAdapter(DatabaseActivity.this, mUpl);
-                mPictureAdapter = new PictureAdapter(DatabaseActivity.this, imageDB.getUploads());
-                mRecView.setAdapter((mPictureAdapter));
             }
             // if error happens display a message
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(DatabaseActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    //brings the user to "addActivity"
-    public void startAdd(View view) {
-        Intent intent = new Intent(this, AddActivity.class);
-        startActivity(intent);
+    public ImageDB getImageDB() {
+        return imageDB;
     }
-
 }

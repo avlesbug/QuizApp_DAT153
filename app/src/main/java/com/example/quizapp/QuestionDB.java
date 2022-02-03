@@ -1,17 +1,25 @@
 package com.example.quizapp;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class QuestionDB {
-    public ArrayList<Question> createQuestions(){
+    public ArrayList<Question> createQuestions(ImageDB imageDB){
 
         ArrayList<Question> questions = new ArrayList<>();
 
-        questions.add(new Question(R.drawable.erna_solberg,"Trine Skei Grande","Erna Solberg","Hillary Clinton",2));
-        questions.add(new Question(R.drawable.trine_skei_grande,"Erna Solberg","Hillary Clinton","Trine Skei Grande",3));
-        questions.add(new Question(R.drawable.hillary_clinton,"Hillary Clinton","Trine Skei Grande","Erna Solberg",1));
-        questions.add(new Question(R.drawable.jens_stoltenberg,"Jens Stoltenberg","Erna Solberg","Jonas Gahr Støre",1));
-        questions.add(new Question(R.drawable.jonas_gahr_store,"Jens Stoltenberg","Jonas Gahr Støre","Bill Clinton",2));
+        System.out.println("Size:" + imageDB.getUploads().size());
+
+        for(Upload u : imageDB.getUploads()){
+            List<String> allOptions = imageDB.getAllNames();
+            Random rand = new Random();
+            String randomOption1 = allOptions.get(rand.nextInt(allOptions.size()));
+            String randomOption2 = allOptions.get(rand.nextInt(allOptions.size()));
+            String correctOption = u.getName();
+            Question question = new Question(u.getImageUrl(),randomOption1,randomOption2,correctOption);
+            questions.add(question);
+        }
 
         return questions;
     }
