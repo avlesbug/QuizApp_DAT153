@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="blue_yonder">#FF6E8894</color>
+    <color name="blue_yonder_var">#FF637A85</color>
+    <color name="red_ish">#FF9E788F</color>
+    <color name="green">#FF85BAA1</color>
+    <color name="green_var">#FF186261</color>
+    <color name="red">#FFF9CED0</color>
+    <color name="red_var">#FFEF767A</color>
+    <color name="blue">#FF7284A8</color>
+    <color name="blue_var">#FF3E4A65</color>
+    <color name="almost_black">#FF474954</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
 </resources>

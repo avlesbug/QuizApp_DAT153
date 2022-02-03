@@ -2,27 +2,26 @@ package com.example.quizapp;
 
 public class Question {
 
-    private int imageId;
+    private String imageUrl;
     private String option1;
     private String option2;
     private String option3;
-    private int correctAnswer;
+    private String correctAnswer;
 
-    public Question(int imageId, String option1, String option2, String option3, int correctAnswer){
-        this.imageId = imageId;
+    public Question(String imageUrl, String option1, String option2, String correctAnswer){
+        this.imageUrl = imageUrl;
         this.option1=option1;
         this.option2=option2;
-        this.option3=option3;
         this.correctAnswer=correctAnswer;
 
     }
 
-    public int getCorrectAnswer() {
+    public String getCorrectAnswer() {
         return correctAnswer;
     }
 
-    public int getImageId() {
-        return imageId;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public String getOption1() {
@@ -33,9 +32,6 @@ public class Question {
         return option2;
     }
 
-    public String getOption3() {
-        return option3;
-    }
 
     public String toString(){
         return (option1 + ", " + option2 + ", " + option3 + ", correct: " + correctAnswer);
