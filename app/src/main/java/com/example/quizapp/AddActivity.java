@@ -58,7 +58,7 @@ public class AddActivity extends AppCompatActivity {
 
         mButtonChoosePicture = findViewById(R.id.button_choose_picture);
         mButtonSaveEntry = findViewById(R.id.button_uploader);
-        //
+
         mEditTextPictureName = findViewById(R.id.edit_text_picture_name);
         mImageView = findViewById(R.id.image_view);
         mProgressbar = findViewById(R.id.progressbar);
@@ -89,7 +89,6 @@ public class AddActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        //apparently deprecated. Still works though
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 
@@ -101,16 +100,11 @@ public class AddActivity extends AppCompatActivity {
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
 
-            //when using picasso use this to display image
-            //  Picasso.with(this).load(mImageUri).into(mImageView);
-
-            //alt. native version
             mImageView.setImageURI(mImageUri);
         }
     }
 
     //get fileextension from image
-    //wtf
     private String getFileEx(Uri uri){
         ContentResolver contentresolver = getContentResolver();
         MimeTypeMap mimetypemap =MimeTypeMap.getSingleton();
@@ -127,30 +121,9 @@ public class AddActivity extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            // mProgressbar.setProgress(0);
-                  /*  Handler delayer = new Handler();
-                    delayer.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mProgressbar.setProgress(0);
-                        }
-                    },100);*/
                             //imageref is the name of the picture that is saved to the database
                             Toast.makeText(AddActivity.this, "Nice you managed to upload an image" + imageref +".",
                                     Toast.LENGTH_LONG).show();
-                            // SaveImagerefToList(imageref);
-                            //i found this in the comment section of a youtube video lol
-                           /* Upload upload = new Upload(mEditTextPictureName
-                                    .getText()
-                                    .toString()
-                                    .trim(),taskSnapshot
-                                    .getMetadata().
-                                     getReference()
-                                    .getDownloadUrl()
-                                    .toString());
-                    String entryId = mDatabaseRef.push().getKey();
-                    mDatabaseRef.child(entryId).setValue(upload); */
-                            //it didnt work
                             Task<Uri> urlTask = taskSnapshot
                                     .getStorage()
                                     .getDownloadUrl();
@@ -168,24 +141,13 @@ public class AddActivity extends AppCompatActivity {
                             //commented code from line 139-148 lead to images not loading.
 
                         }
-
-
                         //if failure to upload image, print message
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(AddActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                //displays progress of pic uploading in %
-                //this is unholy
-                //value is casted into progressbar
-            }/*).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-            double prog = (100.0 * taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
-            mProgressbar.setProgress((int)prog);
-            }
-        }*/);
+            });
 
             //failsafe
         }else {

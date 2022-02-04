@@ -25,7 +25,6 @@ public class DatabaseActivity extends AppCompatActivity {
     private PictureAdapter mPictureAdapter;
     private RecyclerView mRecView;
     private ImageDB imageDB;
-    //private List<Upload> mUpl;
 
 
     @Override
@@ -39,7 +38,6 @@ public class DatabaseActivity extends AppCompatActivity {
         mRecView.setLayoutManager(new LinearLayoutManager(DatabaseActivity.this));
         mRecView.setHasFixedSize(true);
         imageDB = new ImageDB();
-        //mUpl= new ArrayList<>();
 
         //path to databasefiles. Pictures are saved in "uploads" folder.
         mDatabaseReferance = FirebaseDatabase.getInstance().getReference("uploads");
@@ -50,9 +48,7 @@ public class DatabaseActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot : dataSnap.getChildren()) {
                     Upload upload = postSnapshot.getValue(Upload.class);
                     imageDB.addImage(upload);
-                    //mUpl.add(upload);
                 }
-                //mPictureAdapter = new PictureAdapter(DatabaseActivity.this, mUpl);
                 mPictureAdapter = new PictureAdapter(DatabaseActivity.this, imageDB.getUploads());
                 mRecView.setAdapter((mPictureAdapter));
             }
