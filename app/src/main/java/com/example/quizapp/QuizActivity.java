@@ -58,7 +58,7 @@ public class QuizActivity extends AppCompatActivity {
 
 
         //path to databasefiles. Pictures are saved in "uploads" folder.
-        mDatabaseReferance = FirebaseDatabase.getInstance().getReference("uploads");
+        mDatabaseReferance = FirebaseDatabase.getInstance().getReference("test");
 
         mDatabaseReferance.addValueEventListener(new ValueEventListener() {
             @Override
@@ -86,9 +86,10 @@ public class QuizActivity extends AppCompatActivity {
             updateOptions();
             updateImage();
             setDefaultBorder();
+        } else{
+            setQuestions();
+            setDefaultBorder();
         }
-        finishQuiz();
-        setDefaultBorder();
     }
 
     //set the border around the answer options
@@ -101,17 +102,13 @@ public class QuizActivity extends AppCompatActivity {
         tw3.setBackground(ContextCompat.getDrawable(this, R.drawable.default_option_border_bg));
     }
 
-    private void finishQuiz() {
-    }
-
     //sets the first question when the activity is lanched
     private void setQuestions() {
-        System.out.println(quizImageDB.getUploads().size());
         questions = qDB.createQuestions(quizImageDB);
         activeQuestion = questions.get(0);
         updateOptions();
         updateImage();
-        System.out.println(quizImageDB.getAllNames());
+        setDefaultBorder();
     }
 
     //updates the imageView
@@ -148,6 +145,14 @@ public class QuizActivity extends AppCompatActivity {
 
         option3.setText(lastOption);
 
+        if(randomOption1.equals(activeQuestion.getCorrectAnswer())){
+            correctAnswerId = option1.getId();
+        } else if(randomOption2.equals(activeQuestion.getCorrectAnswer())){
+            correctAnswerId = option2.getId();
+        }else if(lastOption.equals(activeQuestion.getCorrectAnswer())){
+            correctAnswerId = option3.getId();
+        }
+
     }
 
     //checks if the selected option is the correct answer
@@ -157,6 +162,7 @@ public class QuizActivity extends AppCompatActivity {
             return true;
         }
         else{
+            System.out.println("Selected: " + selectedOptionText + " but correct option was: " + activeQuestion.getCorrectAnswer());
             drawCoorectOpt(correctAnswerId);
             drawWrong(selectedOption);
             return false;
@@ -168,9 +174,7 @@ public class QuizActivity extends AppCompatActivity {
         selectedOption = view.getId();
         TextView button = findViewById(view.getId());
         selectedOptionText = button.getText().toString();
-        if(selectedOptionText.equals(activeQuestion.getCorrectAnswer())){
-            correctAnswerId = view.getId();
-        }
+
         TextView tw = findViewById(R.id.twOption1);
         tw.setBackground(ContextCompat.getDrawable(this, R.drawable.selected_option_border_bg));
         TextView tw2 = findViewById(R.id.twOption2);
@@ -184,10 +188,6 @@ public class QuizActivity extends AppCompatActivity {
         TextView button = findViewById(view.getId());
         selectedOptionText = button.getText().toString();
 
-        if(selectedOptionText.equals(activeQuestion.getCorrectAnswer())){
-            correctAnswerId = view.getId();
-        }
-
         TextView tw2 = findViewById(R.id.twOption2);
         tw2.setBackground(ContextCompat.getDrawable(this, R.drawable.selected_option_border_bg));
         TextView tw = findViewById(R.id.twOption1);
@@ -200,10 +200,6 @@ public class QuizActivity extends AppCompatActivity {
         selectedOption = view.getId();
         TextView button = findViewById(view.getId());
         selectedOptionText = button.getText().toString();
-
-        if(selectedOptionText.equals(activeQuestion.getCorrectAnswer())){
-            correctAnswerId = view.getId();
-        }
 
         TextView tw3 = findViewById(R.id.twOption3);
         tw3.setBackground(ContextCompat.getDrawable(this, R.drawable.selected_option_border_bg));

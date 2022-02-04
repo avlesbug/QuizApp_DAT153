@@ -62,8 +62,8 @@ public class AddActivity extends AppCompatActivity {
         mEditTextPictureName = findViewById(R.id.edit_text_picture_name);
         mImageView = findViewById(R.id.image_view);
         mProgressbar = findViewById(R.id.progressbar);
-        mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
+        mStorageRef = FirebaseStorage.getInstance().getReference("test");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("test");
 
         //onclick handlers
         mButtonChoosePicture.setOnClickListener(new View.OnClickListener() {

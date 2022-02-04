@@ -13,8 +13,11 @@ public class QuestionDB {
 
         for(Upload u : imageDB.getUploads()){
             List<String> allOptions = imageDB.getAllNames();
+            allOptions.remove(u.getName());
+            System.out.println("Removed: " + u.getName());
             Random rand = new Random();
             String randomOption1 = allOptions.get(rand.nextInt(allOptions.size()));
+            allOptions.remove(randomOption1);
             String randomOption2 = allOptions.get(rand.nextInt(allOptions.size()));
             String correctOption = u.getName();
             Question question = new Question(u.getImageUrl(),randomOption1,randomOption2,correctOption);
