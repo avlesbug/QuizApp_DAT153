@@ -140,6 +140,7 @@ public class AddActivity extends AppCompatActivity {
 
                             //commented code from line 139-148 lead to images not loading.
 
+                        finish();
                         }
                         //if failure to upload image, print message
                     }).addOnFailureListener(new OnFailureListener() {

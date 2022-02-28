@@ -40,7 +40,7 @@ public class DatabaseActivity extends AppCompatActivity {
         imageDB = new ImageDB();
 
         //path to databasefiles. Pictures are saved in "uploads" folder.
-        mDatabaseReferance = FirebaseDatabase.getInstance().getReference("uploads");
+        mDatabaseReferance = FirebaseDatabase.getInstance().getReference("test");
 
         mDatabaseReferance.addValueEventListener(new ValueEventListener() {
             @Override

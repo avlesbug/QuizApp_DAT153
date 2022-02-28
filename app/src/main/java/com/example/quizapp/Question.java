@@ -1,11 +1,18 @@
 package com.example.quizapp;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "question_table")
 public class Question {
+
+    @PrimaryKey(autoGenerate = true)
+    public int uid;
 
     private String imageUrl;
     private String option1;
     private String option2;
-    private String option3;
     private String correctAnswer;
 
     public Question(String imageUrl, String option1, String option2, String correctAnswer){
@@ -15,6 +22,7 @@ public class Question {
         this.correctAnswer=correctAnswer;
 
     }
+
 
     public String getCorrectAnswer() {
         return correctAnswer;
@@ -32,9 +40,13 @@ public class Question {
         return option2;
     }
 
+    public int getUid() {
+        return uid;
+    }
+
 
     public String toString(){
-        return (option1 + ", " + option2 + ", " + option3 + ", correct: " + correctAnswer);
+        return (option1 + ", " + option2 + ", correct: " + correctAnswer);
     }
 
 }

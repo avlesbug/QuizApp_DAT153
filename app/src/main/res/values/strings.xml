@@ -13,4 +13,8 @@
     <string name="option2">Option 2</string>
     <string name="Score">0</string>
     <string name="who">Who is this?</string>
+    <string name="saveButton">Save</string>
+    <string name="add_word">Add word!</string>
+    <string name="empty_not_saved">Question not saved because it is empty.</string>
+    <string name="hint_word">Word...</string>
 </resources>

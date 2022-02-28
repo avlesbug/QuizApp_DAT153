@@ -9,8 +9,6 @@ public class QuestionDB {
 
         ArrayList<Question> questions = new ArrayList<>();
 
-        System.out.println("Size:" + imageDB.getUploads().size());
-
         for(Upload u : imageDB.getUploads()){
             List<String> allOptions = imageDB.getAllNames();
             allOptions.remove(u.getName());

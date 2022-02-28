@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     /** Called when the user taps the Database button */
     public void startDatabase(View view) {
-        Intent intent = new Intent(this, DatabaseActivity.class);
+        Intent intent = new Intent(this, NewDBActivity.class);
         startActivity(intent);
         // Do something in response to button
     }

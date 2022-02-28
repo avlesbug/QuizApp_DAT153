@@ -1,11 +1,17 @@
 package com.example.quizapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.DatabaseConfiguration;
+import androidx.room.InvalidationTracker;
+import androidx.room.Room;
+import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -46,6 +52,7 @@ public class QuizActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseReferance;
     private ImageDB quizImageDB;
     private int correctAnswerId;
+    private QuestionRoomDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,8 @@ public class QuizActivity extends AppCompatActivity {
         selectedOption = 0;
         selectedOptionText = "";
         currentScore = 0;
+        db = Room.databaseBuilder(getApplicationContext(),
+                QuestionRoomDatabase.class, "database-question").build();
 
 
         //path to databasefiles. Pictures are saved in "uploads" folder.
@@ -66,7 +75,6 @@ public class QuizActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot : dataSnap.getChildren()) {
                     Upload upload = postSnapshot.getValue(Upload.class);
                     quizImageDB.addImage(upload);
-                    System.out.println("Size: " + quizImageDB.getUploads().size());
                 }
             }
             // if error happens display a message
@@ -101,6 +109,7 @@ public class QuizActivity extends AppCompatActivity {
         TextView tw3 = findViewById(R.id.twOption3);
         tw3.setBackground(ContextCompat.getDrawable(this, R.drawable.default_option_border_bg));
     }
+
 
     //sets the first question when the activity is lanched
     private void setQuestions() {
@@ -242,5 +251,13 @@ public class QuizActivity extends AppCompatActivity {
     public void drawWrong(Integer twId){
         TextView tw = findViewById(twId);
         tw.setBackground(ContextCompat.getDrawable(this, R.drawable.wrong_option_bg));
+    }
+
+    public void onClickSave(View view) {
+        saveQuestion();
+    }
+    public void saveQuestion(){
+        db.questionDao().insert(activeQuestion);
+        finish();
     }
 }
