@@ -103,13 +103,6 @@ public class AddActivity extends AppCompatActivity {
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
 
-            Bitmap mBitmap = null;
-            try {
-                mBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),mImageUri);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
             mImageView.setImageURI(mImageUri);
         }
     }

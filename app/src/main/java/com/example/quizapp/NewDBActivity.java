@@ -14,7 +14,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class NewDBActivity extends AppCompatActivity {
 
     private UploadViewModel uploadViewModel;
-    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
+    public static final int NEW_UPLOAD_ACTIVITY_REQUEST_CODE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +35,21 @@ public class NewDBActivity extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> {
             Intent intent = new Intent(NewDBActivity.this, NewAddActivity.class);
-            startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
+            //startActivityForResult(intent, NEW_UPLOAD_ACTIVITY_REQUEST_CODE);
+            startActivity(intent);
         });
     }
 
+/*
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Upload upload = new Upload(data.getStringExtra(NewAddActivity.EXTRA_REPLY),"No image");
-            uploadViewModel.insert(upload);
+        if (requestCode == NEW_UPLOAD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Upload upload = new Upload("empty","empty");
+            System.out.println("Data: " + data.getStringExtra(NewAddActivity.EXTRA_REPLY));
+            if(data.getStringExtra(NewAddActivity.EXTRA_REPLY)!=null) {
+                System.out.println();
+            }
         } else {
             Toast.makeText(
                     getApplicationContext(),
@@ -52,5 +57,8 @@ public class NewDBActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
     }
+
+ */
+
 }
 

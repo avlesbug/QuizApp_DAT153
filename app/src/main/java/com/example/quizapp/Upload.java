@@ -5,6 +5,8 @@ import androidx.room.PrimaryKey;
 
 import com.google.firebase.database.annotations.NotNull;
 
+import java.util.ArrayList;
+
 @Entity(tableName = "upload_table")
 public class Upload {
 
@@ -45,6 +47,10 @@ public class Upload {
 
     public int getUid() {
         return uid;
+    }
+
+    public String toString(){
+        return mName + "///" + mImageUrl;
     }
 
 }

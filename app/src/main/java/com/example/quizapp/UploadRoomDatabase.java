@@ -6,12 +6,13 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverter;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Upload.class}, version = 1, exportSchema = false)
+@Database(entities = {Upload.class}, version = 1)
 public abstract class UploadRoomDatabase extends RoomDatabase {
 
     public abstract UploadDao UploadDao();
