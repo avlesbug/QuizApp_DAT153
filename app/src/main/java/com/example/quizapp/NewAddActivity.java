@@ -17,9 +17,9 @@ public class NewAddActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_add);
-        mEditUploadView = findViewById(R.id.edit_upload);
+        mEditUploadView = findViewById(R.id.edit_text_picture_name);
 
-        final Button button = findViewById(R.id.button_save);
+        final Button button = findViewById(R.id.button_uploader);
         button.setOnClickListener(view -> {
             Intent replyIntent = new Intent();
             if (TextUtils.isEmpty(mEditUploadView.getText())) {
