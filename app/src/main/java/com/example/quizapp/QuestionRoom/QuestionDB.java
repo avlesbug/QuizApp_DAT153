@@ -1,4 +1,8 @@
-package com.example.quizapp;
+package com.example.quizapp.QuestionRoom;
+
+import com.example.quizapp.ImageDB;
+import com.example.quizapp.Question;
+import com.example.quizapp.Upload;
 
 import java.util.ArrayList;
 import java.util.List;

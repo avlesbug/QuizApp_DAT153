@@ -1,9 +1,11 @@
-package com.example.quizapp;
+package com.example.quizapp.QuestionRoom;
 
 import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+
+import com.example.quizapp.Question;
 
 import java.util.List;
 

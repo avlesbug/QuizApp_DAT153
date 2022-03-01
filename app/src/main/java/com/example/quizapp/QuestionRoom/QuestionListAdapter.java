@@ -1,10 +1,12 @@
-package com.example.quizapp;
+package com.example.quizapp.QuestionRoom;
 
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
+
+import com.example.quizapp.Question;
 
 public class QuestionListAdapter extends ListAdapter<Question, QuestionViewHolder> {
 

@@ -1,11 +1,13 @@
-package com.example.quizapp;
+package com.example.quizapp.QuestionRoom;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 
-import java.util.ArrayList;
+import com.example.quizapp.Question;
+import com.example.quizapp.QuestionRoom.QuestionRoomDatabase;
+import com.example.quizapp.R;
 
 public class SaveQuestionActivity extends AppCompatActivity {
     private Question question;

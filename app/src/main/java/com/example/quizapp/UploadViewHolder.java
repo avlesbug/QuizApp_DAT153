@@ -7,21 +7,21 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-class QuestionViewHolder extends RecyclerView.ViewHolder {
-    private final TextView questionItemView;
+class UploadViewHolder extends RecyclerView.ViewHolder {
+    private final TextView uploadItemView;
 
-    private QuestionViewHolder(View itemView) {
+    private UploadViewHolder(View itemView) {
         super(itemView);
-        questionItemView = itemView.findViewById(R.id.textView);
+        uploadItemView = itemView.findViewById(R.id.textView);
     }
 
     public void bind(String text) {
-        questionItemView.setText(text);
+        uploadItemView.setText(text);
     }
 
-    static QuestionViewHolder create(ViewGroup parent) {
+    static UploadViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
-        return new QuestionViewHolder(view);
+        return new UploadViewHolder(view);
     }
 }

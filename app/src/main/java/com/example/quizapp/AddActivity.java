@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -30,6 +32,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.net.URI;
 
 public class AddActivity extends AppCompatActivity {
@@ -99,6 +102,13 @@ public class AddActivity extends AppCompatActivity {
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
+
+            Bitmap mBitmap = null;
+            try {
+                mBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),mImageUri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             mImageView.setImageURI(mImageUri);
         }

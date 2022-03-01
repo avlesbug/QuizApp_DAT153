@@ -13,7 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class NewDBActivity extends AppCompatActivity {
 
-    private QuestionViewModel questionViewModel;
+    private UploadViewModel uploadViewModel;
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
 
     @Override
@@ -22,14 +22,14 @@ public class NewDBActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_dbactivity);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final QuestionListAdapter adapter = new QuestionListAdapter(new QuestionListAdapter.QuestionDiff());
+        final UploadListAdapter adapter = new UploadListAdapter(new UploadListAdapter.UploadDiff());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        questionViewModel = new ViewModelProvider(this).get(QuestionViewModel.class);
+        uploadViewModel = new ViewModelProvider(this).get(UploadViewModel.class);
 
-        questionViewModel.getAllQuestions().observe(this, questions -> {
-            adapter.submitList(questions);
+        uploadViewModel.getAllUploads().observe(this, uploads -> {
+            adapter.submitList(uploads);
         });
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -43,8 +43,8 @@ public class NewDBActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Question question = new Question("no image","option 1","option2",data.getStringExtra(NewAddActivity.EXTRA_REPLY));
-            questionViewModel.insert(question);
+            Upload upload = new Upload(data.getStringExtra(NewAddActivity.EXTRA_REPLY),"No image");
+            uploadViewModel.insert(upload);
         } else {
             Toast.makeText(
                     getApplicationContext(),

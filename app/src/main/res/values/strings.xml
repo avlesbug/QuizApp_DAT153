@@ -16,5 +16,5 @@
     <string name="saveButton">Save</string>
     <string name="add_word">Add word!</string>
     <string name="empty_not_saved">Question not saved because it is empty.</string>
-    <string name="hint_word">Word...</string>
+    <string name="hint_word">Who is this?</string>
 </resources>

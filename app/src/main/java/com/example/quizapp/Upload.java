@@ -1,18 +1,26 @@
 package com.example.quizapp;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import com.google.firebase.database.annotations.NotNull;
+
+@Entity(tableName = "upload_table")
 public class Upload {
+
+    @PrimaryKey(autoGenerate = true)
+    public int uid;
 
     private String mName;
     private String mImageUrl;
-
+/*
     public Upload() {
 //DO NOT DELETE THIS CONSTRUCTOR
     }
 
-    public Upload(String name, String imageUrl) {
-    if(name.trim().equals("")) {
-        name = "No name";
-    }
+ */
+
+    public Upload(@NotNull String name, String imageUrl) {
 
         mName = name;
         mImageUrl = imageUrl;
@@ -21,7 +29,6 @@ public class Upload {
 
     public String getName(){
         return mName;
-
     }
 
     public void setName(String name) {
@@ -33,7 +40,11 @@ public class Upload {
     }
 
     public void setImageUrl(String imageUrl) {
-
         mImageUrl = imageUrl;
     }
+
+    public int getUid() {
+        return uid;
+    }
+
 }

@@ -18,7 +18,7 @@
             android:name=".NewDBActivity"
             android:exported="false" />
         <activity
-            android:name=".SaveQuestionActivity"
+            android:name=".QuestionRoom.SaveQuestionActivity"
             android:exported="false" />
         <activity
             android:name=".DatabaseActivity"
