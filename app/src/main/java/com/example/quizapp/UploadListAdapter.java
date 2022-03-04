@@ -20,7 +20,12 @@ public class UploadListAdapter extends ListAdapter<Upload, UploadViewHolder> {
     @Override
     public void onBindViewHolder(UploadViewHolder holder, int position) {
         Upload current = getItem(position);
-        holder.bind(current.getName());
+        if(current.getImage()!=null) {
+            holder.bind("Name: " + current.getName() + ", Image " + current.getImage());
+        } else{
+            holder.bind("Name: " + current.getName());
+            System.out.println("Image was empty");
+        }
     }
 
     static class UploadDiff extends DiffUtil.ItemCallback<Upload> {

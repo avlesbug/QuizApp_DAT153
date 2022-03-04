@@ -7,12 +7,14 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Upload.class}, version = 1)
+//@TypeConverters(Converters.class)
 public abstract class UploadRoomDatabase extends RoomDatabase {
 
     public abstract UploadDao UploadDao();
@@ -49,11 +51,13 @@ public abstract class UploadRoomDatabase extends RoomDatabase {
                 // If you want to start with more Uploads, just add them.
                 UploadDao dao = INSTANCE.UploadDao();
                 dao.deleteAll();
-
+/*
                 Upload upload = new Upload("Person Personsen","imageUri");
                 dao.insert(upload);
                 upload = new Upload("Guy Guyson","imageUri");
                 dao.insert(upload);
+
+ */
             });
         }
     };

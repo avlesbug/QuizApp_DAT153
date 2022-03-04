@@ -49,7 +49,8 @@ public class DatabaseActivity extends AppCompatActivity {
                     Upload upload = postSnapshot.getValue(Upload.class);
                     imageDB.addImage(upload);
                 }
-                mPictureAdapter = new PictureAdapter(DatabaseActivity.this, imageDB.getUploads());
+                mPictureAdapter = new PictureAdapter(DatabaseActivity.this,imageDB.getUploads());
+                //mPictureAdapter.setmUpl();
                 mRecView.setAdapter((mPictureAdapter));
             }
             // if error happens display a message

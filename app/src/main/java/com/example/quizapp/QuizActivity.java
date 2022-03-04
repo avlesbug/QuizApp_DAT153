@@ -3,8 +3,12 @@ package com.example.quizapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.room.Room;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,14 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.quizapp.QuestionRoom.QuestionDB;
-import com.example.quizapp.QuestionRoom.QuestionRoomDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,15 +29,14 @@ import java.util.Random;
 public class QuizActivity extends AppCompatActivity {
 
     private ArrayList<Question> questions;
-    QuestionDB qDB = new QuestionDB();
     private int selectedOption;
     private String selectedOptionText;
     private Question activeQuestion;
     private int currentScore;
-    private DatabaseReference mDatabaseReferance;
+    private UploadViewModel uploadViewModel;
     private ImageDB quizImageDB;
     private int correctAnswerId;
-    private QuestionRoomDatabase db;
+    private QuestionDB qDB = new QuestionDB();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,26 +46,13 @@ public class QuizActivity extends AppCompatActivity {
         selectedOption = 0;
         selectedOptionText = "";
         currentScore = 0;
-        db = Room.databaseBuilder(getApplicationContext(),
-                QuestionRoomDatabase.class, "database-question").build();
 
 
-        //path to databasefiles. Pictures are saved in "uploads" folder.
-        mDatabaseReferance = FirebaseDatabase.getInstance().getReference("test");
+        uploadViewModel = new ViewModelProvider(this).get(UploadViewModel.class);
 
-        mDatabaseReferance.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnap) {
-                for (DataSnapshot postSnapshot : dataSnap.getChildren()) {
-                    Upload upload = postSnapshot.getValue(Upload.class);
-                    quizImageDB.addImage(upload);
-                }
-            }
-            // if error happens display a message
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(QuizActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-            }
+
+        uploadViewModel.getAllUploads().observe(this, uploads -> {
+            quizImageDB.setmUpl(uploads);
         });
         //setQuestions();
     }
@@ -107,8 +94,9 @@ public class QuizActivity extends AppCompatActivity {
     //updates the imageView
     private void updateImage() {
 
-        ImageView image = findViewById(R.id.imageView);
-        Picasso.with(this).load(activeQuestion.getImageUrl()).into(image);
+        ImageView imageView = findViewById(R.id.imageView);
+        //Picasso.with(this).load(Uri.parse(activeQuestion.getImageUrl())).into(image);
+        imageView.setImageURI(Uri.parse(activeQuestion.getImage()));
     }
 
     //updates option buttons with new answer options
@@ -237,11 +225,4 @@ public class QuizActivity extends AppCompatActivity {
         tw.setBackground(ContextCompat.getDrawable(this, R.drawable.wrong_option_bg));
     }
 
-    public void onClickSave(View view) {
-        saveQuestion();
-    }
-    public void saveQuestion(){
-        db.questionDao().insert(activeQuestion);
-        finish();
-    }
 }

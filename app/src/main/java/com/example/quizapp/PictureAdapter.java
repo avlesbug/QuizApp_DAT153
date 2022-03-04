@@ -1,6 +1,10 @@
 package com.example.quizapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,10 +12,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ImageViewHolder>{
@@ -19,10 +26,11 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ImageVie
     private List<Upload> mUpl;
     private Context mCont;
 
-    public PictureAdapter(Context context, List<Upload> uploads) {
-        mUpl = uploads;
+    public PictureAdapter(Context context, List<Upload> mUpl) {
         mCont = context;
+        this.mUpl = mUpl;
     }
+
 
     //generated stuff
     @NonNull
@@ -35,8 +43,11 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ImageVie
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Upload uploadCur = mUpl.get(position);
+        //holder.textViewname.setText("Name: " + uploadCur.getName()+" Path: "+uploadCur.getImage());
         holder.textViewname.setText(uploadCur.getName());
-        Picasso.with(mCont).load(uploadCur.getImageUrl()).fit().centerCrop().into(holder.imageViewname);
+        //Picasso.with(mCont).load(uploadCur.getImage()).fit().centerCrop().into(holder.imageViewname);
+        holder.imageViewname.setImageURI(Uri.parse(uploadCur.getImage()));
+
 
     }
 
@@ -59,4 +70,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ImageVie
         }
     }
 
+    public void setmUpl(List<Upload> mUpl) {
+        this.mUpl = mUpl;
+    }
 }

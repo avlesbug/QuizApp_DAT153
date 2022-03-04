@@ -1,5 +1,7 @@
 package com.example.quizapp;
 
+import android.graphics.Bitmap;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -14,18 +16,19 @@ public class Upload {
     public int uid;
 
     private String mName;
-    private String mImageUrl;
-/*
+    //private String mImageUrl;
+    private String mImage;
+    /*
     public Upload() {
 //DO NOT DELETE THIS CONSTRUCTOR
     }
 
  */
 
-    public Upload(@NotNull String name, String imageUrl) {
+    public Upload(@NotNull String name,@NotNull String mImage) {
 
-        mName = name;
-        mImageUrl = imageUrl;
+        this.mName = name;
+        this.mImage = mImage;
 
     }
 
@@ -37,12 +40,12 @@ public class Upload {
         mName = name;
     }
 
-    public String getImageUrl() {
-        return mImageUrl;
+    public String getImage() {
+        return mImage;
     }
 
-    public void setImageUrl(String imageUrl) {
-        mImageUrl = imageUrl;
+    public void setImage(String image) {
+        mImage = image;
     }
 
     public int getUid() {
@@ -50,7 +53,7 @@ public class Upload {
     }
 
     public String toString(){
-        return mName + "///" + mImageUrl;
+        return mName + "///" + mImage.toString();
     }
 
 }

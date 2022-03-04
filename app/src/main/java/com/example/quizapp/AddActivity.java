@@ -135,11 +135,11 @@ public class AddActivity extends AppCompatActivity {
 
                             Uri downloadUrl = urlTask.getResult();
 
-                            Upload upload = new Upload(mEditTextPictureName.getText().toString().trim(),downloadUrl.toString());
+                            //Upload upload = new Upload(mEditTextPictureName.getText().toString().trim(),downloadUrl.toString());
 
                             String uploadId = mDatabaseRef.push().getKey();
 
-                            mDatabaseRef.child(uploadId).setValue(upload);
+                            //mDatabaseRef.child(uploadId).setValue(upload);
 
                             //commented code from line 139-148 lead to images not loading.
 

@@ -19,13 +19,14 @@ public class MainActivity extends AppCompatActivity {
     /** Called when the user taps the Quiz button */
     public void startQuiz(View view) {
         Intent intent = new Intent(this, QuizActivity.class);
+        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
         startActivity(intent);
         // Do something in response to button
     }
 
     /** Called when the user taps the Add button */
     public void startAdd(View view) {
-        Intent intent = new Intent(this, AddActivity.class);
+        Intent intent = new Intent(this, NewAddActivity.class);
         startActivity(intent);
         // Do something in response to button
     }
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     /** Called when the user taps the Database button */
     public void startDatabase(View view) {
         Intent intent = new Intent(this, NewDBActivity.class);
+        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
         startActivity(intent);
         // Do something in response to button
     }

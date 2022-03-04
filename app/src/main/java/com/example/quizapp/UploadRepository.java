@@ -25,4 +25,12 @@ public class UploadRepository {
             mUploadDao.insert(upload);
         });
     }
+
+    void deleteAll(){
+        UploadRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mUploadDao.deleteAll();
+        });
+    }
+
+
 }

@@ -1,8 +1,4 @@
-package com.example.quizapp.QuestionRoom;
-
-import com.example.quizapp.ImageDB;
-import com.example.quizapp.Question;
-import com.example.quizapp.Upload;
+package com.example.quizapp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +9,8 @@ public class QuestionDB {
 
         ArrayList<Question> questions = new ArrayList<>();
 
+        System.out.println("Size:" + imageDB.getUploads().size());
+
         for(Upload u : imageDB.getUploads()){
             List<String> allOptions = imageDB.getAllNames();
             allOptions.remove(u.getName());
@@ -22,7 +20,7 @@ public class QuestionDB {
             allOptions.remove(randomOption1);
             String randomOption2 = allOptions.get(rand.nextInt(allOptions.size()));
             String correctOption = u.getName();
-            Question question = new Question(u.getImageUrl(),randomOption1,randomOption2,correctOption);
+            Question question = new Question(u.getImage(),randomOption1,randomOption2,correctOption);
             questions.add(question);
         }
 
