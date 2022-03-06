@@ -195,8 +195,12 @@ public class QuizActivity extends AppCompatActivity {
         Button button = (Button) view;
         String buttonText = button.getText().toString();
         if(buttonText.equals("Start")) {
-            setQuestions();
-            button.setText("Submit");
+            if(quizImageDB.getUploads().size()<3){
+                Toast.makeText(this, "You need to add atleast 3 images to start!",Toast.LENGTH_SHORT).show();
+            } else {
+                setQuestions();
+                button.setText("Submit");
+            }
 
             //if the button text is "Submit" the answer gets checked, the score gets updated and the text of the button is changed to "Next"
         }else if(buttonText.equals("Submit")) {

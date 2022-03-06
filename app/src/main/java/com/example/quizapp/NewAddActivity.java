@@ -85,9 +85,10 @@ public class NewAddActivity extends AppCompatActivity {
                 getContentResolver().takePersistableUriPermission(Uri.parse(mImageUri), Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 Upload upload = new Upload(name,mImageUri);
                 repo.insert(upload);
-                //repo.deleteAll();
+                Toast.makeText(this, "Added " + name + "!", Toast.LENGTH_SHORT).show();
+                finish();
             }
-            //finish();
+
         } else {
             Toast.makeText(this, "You need to select an image!", Toast.LENGTH_SHORT).show();
         }
