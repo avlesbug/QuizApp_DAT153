@@ -28,9 +28,10 @@ import java.util.Random;
 
 public class QuizActivity extends AppCompatActivity {
 
-    private ArrayList<Question> questions;
-    private int selectedOption;
-    private String selectedOptionText;
+
+    public static ArrayList<Question> questions;
+    public static int selectedOption;
+    public static String selectedOptionText;
     private Question activeQuestion;
     private int currentScore;
     private UploadViewModel uploadViewModel;
@@ -227,6 +228,14 @@ public class QuizActivity extends AppCompatActivity {
     public void drawWrong(Integer twId){
         TextView tw = findViewById(twId);
         tw.setBackground(ContextCompat.getDrawable(this, R.drawable.wrong_option_bg));
+    }
+
+    public List<Question> getQuestions(){
+        return questions;
+    }
+
+    public void setSelectedOptionText(String answer){
+        selectedOptionText = answer;
     }
 
 }

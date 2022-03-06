@@ -1,4 +1,4 @@
-package com.example.quizapp;/*
+package com.example.quizapp;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.action.ViewActions;
@@ -40,4 +40,3 @@ public class ActivityTest {
         intended(hasComponent(DatabaseActivity.class.getName()));
     }
 }
-*/
