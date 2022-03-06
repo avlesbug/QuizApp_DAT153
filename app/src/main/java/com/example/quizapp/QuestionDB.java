@@ -20,7 +20,7 @@ public class QuestionDB {
             allOptions.remove(randomOption1);
             String randomOption2 = allOptions.get(rand.nextInt(allOptions.size()));
             String correctOption = u.getName();
-            Question question = new Question(u.getImageUrl(),randomOption1,randomOption2,correctOption);
+            Question question = new Question(u.getImage(),randomOption1,randomOption2,correctOption);
             questions.add(question);
         }
 
