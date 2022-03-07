@@ -3,6 +3,8 @@
 ## Oblig 2 - Testing
 
 Test for changing activity
+![image](https://user-images.githubusercontent.com/54098611/157109059-842f521e-652f-4279-aca6-99bbfd9d9071.png)
+
 
 Test for the database
 ![image](https://user-images.githubusercontent.com/54098611/157095872-c8e7c027-7ca7-48a8-933a-d16aa675dc9e.png)
