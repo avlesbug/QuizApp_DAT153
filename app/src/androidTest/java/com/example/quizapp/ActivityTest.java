@@ -37,6 +37,6 @@ public class ActivityTest {
         Intents.init();
         onView(withId(R.id.db_button))
                 .perform(ViewActions.click());
-        intended(hasComponent(DatabaseActivity.class.getName()));
+        intended(hasComponent(NewDBActivity.class.getName()));
     }
 }
