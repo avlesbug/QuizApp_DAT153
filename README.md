@@ -15,3 +15,32 @@ Other remarks:
 * Make sure navigating back from an activity works correctly (common mistakes: internal data structure not updating correctly when adding/removing, memory leak when dealing with image files).
 * Document your code!
 * Please use git "properly", that is, only store the Android Studio project, not generated files like JARs and class-files.
+__________________
+
+output-metadata.json
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.example.quizapp.test",
+  "variantName": "debugAndroidTest",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 0,
+      "versionName": "",
+      "outputFile": "app-debug-androidTest.apk"
+    }
+  ],
+  "elementType": "File"
+}
+
+
+AndroidManifest.xml
+  <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="31" />
