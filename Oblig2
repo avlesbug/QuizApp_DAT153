@@ -1,0 +1,2 @@
+Use Gradle either from the command line or through Android Studio's Gradle tool window to install and run the test-cases, so that we can closely observe the steps that are necessary: ./gradlew connectedAndroidTest --info
+Which APKs are used during testing? You can use the open-source tool apktool decode /path/to/the.apk to inspect their contents. Which adb commands does Gradle use to install & run the tests on the phone/emulator?
