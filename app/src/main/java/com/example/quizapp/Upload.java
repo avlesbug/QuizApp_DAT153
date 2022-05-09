@@ -5,8 +5,6 @@ import android.graphics.Bitmap;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.google.firebase.database.annotations.NotNull;
-
 import java.util.ArrayList;
 
 @Entity(tableName = "upload_table")
@@ -25,7 +23,7 @@ public class Upload {
 
  */
 
-    public Upload(@NotNull String name,@NotNull String mImage) {
+    public Upload(String name, String mImage) {
 
         this.mName = name;
         this.mImage = mImage;

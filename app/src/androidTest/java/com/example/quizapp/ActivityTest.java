@@ -11,9 +11,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
-import com.example.quizapp.DatabaseActivity;
-import com.example.quizapp.MainActivity;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
